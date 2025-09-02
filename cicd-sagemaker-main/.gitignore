@@ -1,0 +1,48 @@
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# Jupyter and IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Model artifacts (optional: comment out if you want to keep them)
+# models/*.pkl
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+
+# Streamlit cache
+.streamlit/
+
+# Environment variables and secrets
+.env
+*.env
+
+# GitHub Actions workflows (keep!)
+!.github/
+!.github/workflows/
+
+# Documentation artifacts
+*.md~
+*.md.backup
+
+# Ignore packaged artifacts (optional)
+packaged_models/
