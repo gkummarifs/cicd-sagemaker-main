@@ -1,9 +1,9 @@
 name: Deploy to SageMaker
-#
+
 on:
   push:
     branches:
-        main   # ✅ no need for square brackets here
+      - main
 
 jobs:
   deploy:
@@ -26,5 +26,5 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ap-south-1   # ✅ uncomment and set region
-        run: python deploy.py
+          AWS_DEFAULT_REGION: ap-south-1   # <-- Add your region here
+        run: python model/deploy.py
