@@ -3,31 +3,28 @@ name: Deploy to SageMaker
 on:
   push:
     branches:
-      - main  # ✅ Remove brackets — YAML expects a list, not a nested array
+      - main   # ✅ no need for square brackets here
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install boto3 sagemaker scikit-learn numpy
+      - name: Install dependencies
+        run: |
+          pip install boto3 sagemaker scikit-learn numpy
 
-    - name: Deploy Model to SageMaker
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: us-seast-1  # ✅ Uncomment or move to env block if needed
-
-      run: |
-        python deploy.py
+      - name: Deploy Model to SageMaker
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ap-south-1   # ✅ uncomment and set region
+        run: python deploy.py
